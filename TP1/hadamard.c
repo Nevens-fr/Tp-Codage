@@ -14,7 +14,7 @@
 int main(void){
     int nbUtilisateurs;
     int taille_message = 3;
-    int **tableau_messages, *mess_etale;
+    int **tableau_messages, *mess_etale, *mess_recu;
 
     do{
         printf("Saisissez  le nombre d'utilisateurs : ");
@@ -26,7 +26,7 @@ int main(void){
     MAX = nbUtilisateurs;
 
     int tableau[MAX][MAX];
-    int messages[MAX][TAILLE_MESSAGE];
+    int messages[MAX][TAILLE_MESSAGE], messages_recu[MAX][TAILLE_MESSAGE];
 
     saisies_utilisateurs(nbUtilisateurs, messages);
 
@@ -55,6 +55,15 @@ int main(void){
     printf("\nAffichage des messages étalés (étalement de Hadamard) : \n");
     affichage_codage(nbUtilisateurs* taille_message, mess_etale);
 
+    printf("On envoie le message étalé : \nOK\n\n");
+    mess_recu = canal(mess_etale);
+
+    printf("Message reçu, on le désétale \n");
+    desetalement(mess_recu, messages_recu, nbUtilisateurs, taille_message * nbUtilisateurs);
+
+    printf("Les messages reçus sont : \n");
+    for(int i = 0; i< nbUtilisateurs; i++)
+        affichage_codage(taille_message, messages_recu[i]);
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Libération mémoire

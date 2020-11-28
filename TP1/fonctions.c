@@ -189,6 +189,36 @@ void codage_utilisateurs(int nbUser, int tableau[MAX][MAX], int messages[MAX][TA
 }
 
 
+/**
+ * \fn int *canal(int *mess_etale)
+ * 
+ * \param *mess_etale, les messages des utilisateurs, étalés et codés
+ * 
+ * \brief Envoie par cette fonction canal, un message étalé
+ * */
 int *canal(int *mess_etale){
     return mess_etale;
+}
+
+
+
+void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess){
+    int i, j, k, ii;
+
+    for(i = 0; i < nbUser; i++){
+        ii = 0;
+        for(j = 0; j < TAILLE_MESSAGE; j++){
+            
+            messages_recu[i][j] = 0;
+            //for(k = 0; k < taille_mess; k++){
+                //printf("%d ii, case message reçu %d\n", ii, *(mess_recu + ii));
+            for(k = 0; k < nbUser; k++){
+                messages_recu[i][j] += *(mess_recu + ii); 
+                ii++;
+            }
+            messages_recu[i][j] = nbUser / messages_recu[i][j];
+            if(messages_recu[i][j] < 0)
+                messages_recu[i][j] = 0;
+        }
+    }
 }
