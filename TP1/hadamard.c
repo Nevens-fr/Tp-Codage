@@ -13,9 +13,6 @@
 
 int main(void){
     int nbUtilisateurs;
-    int message[] = {1, 1, 1};
-    int message2[] = {1, 0, 1};
-    int message4[] = {0, 1, 1};
     int taille_message = 3;
     int **tableau_messages, *mess_etale;
 
@@ -28,32 +25,40 @@ int main(void){
 
     MAX = nbUtilisateurs;
 
-    int tableau[nbUtilisateurs][nbUtilisateurs];
+    int tableau[MAX][MAX];
+    int messages[MAX][TAILLE_MESSAGE];
 
+    saisies_utilisateurs(nbUtilisateurs, messages);
+
+    printf("\nCréation et initialisation de la matrice d'Hadamard\nOk\n\n");
     hadamard(tableau, nbUtilisateurs);
    
+    printf("Affichage de la matrice d'Hadamard pour le nombre d'utilisateur(s) souhaité(s)\n");
     afficher_hadamard(tableau, nbUtilisateurs);
 
-    tableau_messages = allocation_tab_message(nbUtilisateurs, taille_message);
+    tableau_messages = allocation_tab_message(nbUtilisateurs);
 
     mess_etale = malloc(sizeof(int) * nbUtilisateurs* taille_message);
 
     mise_a_zero(tableau_messages, nbUtilisateurs, taille_message * nbUtilisateurs);
 
-    codage(0, nbUtilisateurs, tableau, message, taille_message, *(tableau_messages + 0));
-    codage(1, nbUtilisateurs, tableau, message2, taille_message, *(tableau_messages + 1));
-    codage(3, nbUtilisateurs, tableau, message4, taille_message, *(tableau_messages + 3));
+    codage_utilisateurs(nbUtilisateurs, tableau, messages, tableau_messages);
 
-    printf("Messages codés : \n");  
-    affichage_codage(taille_message * nbUtilisateurs, *(tableau_messages + 0));
-    affichage_codage(taille_message * nbUtilisateurs, *(tableau_messages + 1));
-    affichage_codage(taille_message * nbUtilisateurs, *(tableau_messages + 3));
+
+    printf("\nMessages codés grâce à la matrice: \n");  
+    for(int i = 0; i < nbUtilisateurs; i++)
+        affichage_codage(taille_message * nbUtilisateurs, *(tableau_messages + i));
+
 
     etalement(tableau_messages, taille_message * nbUtilisateurs, nbUtilisateurs,mess_etale);
 
-    printf("Affichage de l'étalement : \n");
+    printf("\nAffichage des messages étalés (étalement de Hadamard) : \n");
     affichage_codage(nbUtilisateurs* taille_message, mess_etale);
 
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Libération mémoire
+///////////////////////////////////////////////////////////////////////////////////////////
     for(int i = 0; i < nbUtilisateurs; i++)
         free(*(tableau_messages + i));
     free(tableau_messages);

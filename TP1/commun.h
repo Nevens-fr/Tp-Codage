@@ -4,6 +4,8 @@
     #include <stdio.h>
     #include <stdlib.h>
 
+    #define TAILLE_MESSAGE 3
+
 
     int MAX;
 
