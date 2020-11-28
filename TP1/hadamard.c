@@ -62,6 +62,7 @@ int main(void){
     for(int i = 0; i < nbUtilisateurs; i++)
         free(*(tableau_messages + i));
     free(tableau_messages);
+    free(mess_etale);
 
     return 0;
 }

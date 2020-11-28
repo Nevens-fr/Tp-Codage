@@ -187,3 +187,8 @@ void codage_utilisateurs(int nbUser, int tableau[MAX][MAX], int messages[MAX][TA
             codage(i, nbUser, tableau, messages[i], *(tableau_messages + i));
     }
 }
+
+
+int *canal(int *mess_etale){
+    return mess_etale;
+}

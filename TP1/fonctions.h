@@ -13,6 +13,7 @@
     int **allocation_tab_message(int nbUser);
     void saisies_utilisateurs(int nbUser, int messages[MAX][TAILLE_MESSAGE]);
     void codage_utilisateurs(int nbUser, int tableau[MAX][MAX], int messages[MAX][TAILLE_MESSAGE], int **tableau_messages);
+    int *canal(int *mess_etale);
 
 
 #endif
