@@ -14,7 +14,7 @@
     void saisies_utilisateurs(int nbUser, int messages[MAX][TAILLE_MESSAGE]);
     void codage_utilisateurs(int nbUser, int tableau[MAX][MAX], int messages[MAX][TAILLE_MESSAGE], int **tableau_messages);
     int *canal(int *mess_etale);
-    void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess);
+    void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess, int tableau[MAX][MAX]);
 
 
 #endif

@@ -201,24 +201,59 @@ int *canal(int *mess_etale){
 }
 
 
+/**
+ * \fn void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess, int tableau[MAX][MAX])
+ * 
+ * \param *mess_recu message des utilisateurs après étalage
+ * \param messages_recu tableau recuperant les messages apres desetalage
+ * \param nbUser le nombre d'utilisateurs souhaitant envoyer un message
+ * \param taille_mess La taille du message apres etalage
+ * \param tableau tableau contenant l'étalement de Hadamard
+ * 
+ * \brief Fonction qui transforme des messages étalés en messages.
+ */
+void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess, int tableau[MAX][MAX]){
+    int userActuel, charMess, cmp, bit;
+    int res;
+    int traitement_mess[taille_mess];
 
-void desetalement(int *mess_recu, int messages_recu[MAX][TAILLE_MESSAGE], int nbUser, int taille_mess){
-    int i, j, k, ii;
+    
 
-    for(i = 0; i < nbUser; i++){
-        ii = 0;
-        for(j = 0; j < TAILLE_MESSAGE; j++){
-            
-            messages_recu[i][j] = 0;
-            //for(k = 0; k < taille_mess; k++){
-                //printf("%d ii, case message reçu %d\n", ii, *(mess_recu + ii));
-            for(k = 0; k < nbUser; k++){
-                messages_recu[i][j] += *(mess_recu + ii); 
-                ii++;
-            }
-            messages_recu[i][j] = nbUser / messages_recu[i][j];
-            if(messages_recu[i][j] < 0)
-                messages_recu[i][j] = 0;
+    for(userActuel = 0; userActuel < nbUser; userActuel++){
+
+        //Copie du message étalé pour pouvoir le modifier
+        for(charMess =0; charMess< taille_mess; charMess++){
+            traitement_mess[charMess] = mess_recu[charMess];
         }
+
+        //Multiplication du message étalé par la ligne de l'étalement de Hadamard
+        cmp = 0;
+        for(charMess = 0; charMess < taille_mess; charMess++){
+            traitement_mess[charMess]*= tableau[userActuel][cmp];
+
+            cmp+=1;
+            if(cmp == MAX){
+                cmp=0;
+            }
+        }
+
+        //Désétalement du message
+        bit = 0;
+        for(charMess=0; charMess < taille_mess; charMess++){
+            res = 0;
+            for(cmp = 0; cmp<nbUser; cmp++){
+                res+=traitement_mess[bit];
+                bit +=1;
+            }
+            if(res >= 1){
+                messages_recu[userActuel][charMess] = 1;
+            }
+            else{
+                messages_recu[userActuel][charMess] = 0;
+            }
+        }
+
+
     }
+   
 }

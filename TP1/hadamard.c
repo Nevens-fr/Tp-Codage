@@ -59,7 +59,7 @@ int main(void){
     mess_recu = canal(mess_etale);
 
     printf("Message reçu, on le désétale \n");
-    desetalement(mess_recu, messages_recu, nbUtilisateurs, taille_message * nbUtilisateurs);
+    desetalement(mess_recu, messages_recu, nbUtilisateurs, taille_message * nbUtilisateurs, tableau);
 
     printf("Les messages reçus sont : \n");
     for(int i = 0; i< nbUtilisateurs; i++)
