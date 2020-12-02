@@ -4,5 +4,7 @@
 
 int main(void){
 
+    char message[] = "BILL GATES";
+
     return 0;
 }

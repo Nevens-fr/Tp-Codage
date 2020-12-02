@@ -3,6 +3,7 @@
 
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
 
     #define HDBN 1
     #define ARITHMETIQUE 0
@@ -10,19 +11,33 @@
     #define TRUE 1
     #define FALSE 0
 
-    #define TAILLE 20
+    #define TAILLE 100
+
+    typedef struct{
+        char lettre[TAILLE];
+        float freq[TAILLE][2];
+        int taille;
+    }matrice;
 
     typedef struct{
         int message[TAILLE];
         int dernier_viol, taille;
-        int P[TAILLE];
-        int N[TAILLE];
-    }hdbn;
+    }hdbnIn;
 
     typedef struct{
-        int message[TAILLE];
+        int dernier_viol, taille;
+        int P[TAILLE];
+        int N[TAILLE];
+    }hdbnOut;
+
+    typedef struct{
+        char message[TAILLE];
         int taille;
+    }arithIn;
+
+    typedef struct{
         float F;
-    }arithmetique;
+        matrice frequences;
+    }arithOut;
 
 #endif
