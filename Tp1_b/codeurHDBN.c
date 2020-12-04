@@ -1,6 +1,7 @@
 #include "commun.h"
 
 #include "codeur.h"
+#include "decodeur.h"
 
 int main(void){
 
