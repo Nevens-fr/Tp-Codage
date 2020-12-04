@@ -5,13 +5,19 @@
 
 int main(void){
 
-    char message[] = "BILL GATES";
     arithIn mess, decoder;
-
-    strcpy(mess.message, message);
-    mess.taille = 10;
-
     arithOut res;
+    int i;
+
+    printf("******** Codeur arithmetique : ********\n");
+
+    printf("Saisir votre chaine à coder : ");
+    scanf("%[^\n]", mess.message);
+    getchar();
+
+    for(i = 0; *(mess.message + i); i++);
+    
+    mess.taille = i;
 
     codeur(ARITHMETIQUE, NULL, &mess, NULL, &res);
     decodeur(ARITHMETIQUE, NULL, &decoder, NULL, &res);

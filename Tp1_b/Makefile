@@ -1,14 +1,17 @@
 ^=codeurArith.c codeur.c decodeur.c
 h=codeurHDBN.c codeur.c decodeur.c
 
+all : Arith HDBN
+
+
 Arith : $^
 	gcc $^ -o arith
 
-HDBN : $^
-	gcc $^ -o hdbn
+HDBN : $h
+	gcc $h -o hdbn
 
 test : main	
 	./main
 
-clean : main
+clean : arith hdbn
 	rm arith hdbn
