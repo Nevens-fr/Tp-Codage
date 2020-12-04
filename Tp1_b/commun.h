@@ -24,11 +24,11 @@
 
     typedef struct{
         int message[TAILLE];
-        int dernier_viol, taille;
+        int taille;
     }hdbnIn;
 
     typedef struct{
-        int dernier_viol, taille;
+        int taille;
         int P[TAILLE];
         int N[TAILLE];
     }hdbnOut;

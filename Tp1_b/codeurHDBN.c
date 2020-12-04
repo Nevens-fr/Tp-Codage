@@ -5,19 +5,55 @@
 
 int main(void){
 
-    int message[] = {1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0};
+    ///////VALEURS A CHANGER
+    //Message du td HDB2
+    //int message[] = {1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0};
+
+    //Message HDB3
+    int message[] = {1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0};
+
+    int type = HDB3;
+
+
     hdbnIn mess;
-    hdbnOut recu;
+    hdbnOut code;
+    hdbnIn decode;
+
+    //Calcul de la taille des messages
+    mess.taille = sizeof(message) / sizeof(int);
+    code.taille = mess.taille;
+    decode.taille = mess.taille;
 
     memmove(mess.message, message, sizeof(int) * 23);
 
-    for(int i = 0; i < 23; i++)
+    //Affichage envoie
+    printf("M envoyé : ");
+    for(int i = 0; i < mess.taille; i++)
         printf("%d ", mess.message[i]);
+    printf("\n");
 
-    mess.dernier_viol = 1;
-    mess.taille = 23;
+    //Codage
+    codeur(type, &mess, NULL, &code, NULL);
 
-    codeur(HDB2, &mess, NULL, &recu, NULL);
-    decodeur(HDB2, &mess, NULL, &recu, NULL);
+    //Affichage une fois codé
+    printf("\nCodage P : ");
+    for(int i = 0; i<code.taille; i++)
+        printf("%d ", code.P[i]);
+    printf("\n");
+
+    printf("Codage N : ");
+    for(int i = 0; i<code.taille; i++)
+        printf("%d ", code.N[i]);
+    printf("\n");
+
+    //Decodage
+    decodeur(type, &decode, NULL, &code, NULL);
+
+    //Affichage une fois décodé
+    printf("\nDecodage : ");
+    for(int i = 0; i<decode.taille; i++)
+        printf("%d ", decode.message[i]);
+    printf("\n");
+
     return 0;
 }
