@@ -15,7 +15,7 @@
 
     typedef struct{
         char lettre[TAILLE];
-        float freq[TAILLE][2];
+        double freq[TAILLE][2];
         int taille;
     }matrice;
 
@@ -36,7 +36,7 @@
     }arithIn;
 
     typedef struct{
-        float F;
+        double F;
         matrice frequences;
     }arithOut;
 

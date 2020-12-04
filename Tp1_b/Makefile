@@ -1,5 +1,5 @@
-^=codeurArith.c codeur.c
-h=codeurHDBN.c codeur.c
+^=codeurArith.c codeur.c decodeur.c
+h=codeurHDBN.c codeur.c decodeur.c
 
 Arith : $^
 	gcc $^ -o arith

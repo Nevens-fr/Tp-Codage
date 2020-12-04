@@ -7,5 +7,5 @@
 
     int occurences(char chaine[TAILLE], char l, int taille);
 
-    void frequences_ordonnees(matrice code, int occ[TAILLE], char lettre[TAILLE], int taille);
+    void frequences_ordonnees(matrice *code, int occ[TAILLE], char lettre[TAILLE], int taille);
 #endif
