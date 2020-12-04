@@ -8,4 +8,9 @@
     int occurences(char chaine[TAILLE], char l, int taille);
 
     void frequences_ordonnees(matrice *code, int occ[TAILLE], char lettre[TAILLE], int taille);
+
+    int rechercheViol(int type, hdbnIn *mess,int indiceDepart);
+
+    void init_res(hdbnOut *cod, hdbnIn *mess);
+
 #endif
