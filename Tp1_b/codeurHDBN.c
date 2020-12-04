@@ -9,6 +9,11 @@ int main(void){
     hdbnIn mess;
     hdbnOut recu;
 
+    memmove(mess.message, message, sizeof(int) * 23);
+
+    for(int i = 0; i < 23; i++)
+        printf("%d ", mess.message[i]);
+
     mess.dernier_viol = 1;
     mess.taille = 23;
 
