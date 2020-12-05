@@ -1,5 +1,17 @@
 #include "decodeur.h"
 
+
+/**
+ * \fn void decodeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn, arithOut *cod_arith)
+ * 
+ * \param type, le type de codage souhaité (1 arithmétique, 2 hdb2, 3 hdb3, 4 hdb4)
+ * \param *mess_hdbn, Structure contenant le message d'origine pour un décodage hdbn (peut être NULL si codage arithmétique)
+ * \param *mess_arith, Structure contenant le message d'origine pour un décodage arithmétique (peut être NULL si codage hdbn)
+ * \param *cod_hdbn, Structure contenant le message codé par un codage hdbn (peut être NULL si codage arithmétique)
+ * \param *cod_arith, Structure contenant le message codé par un codage arithmétique (peut être NULL si codage hdbn)
+ * 
+ * \brief Fonction qui selon les paramètres passés, permet de décoder un message soit avec le décodeur HDBN soit avec le décodeur arithmétique
+ */ 
 void decodeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn, arithOut *cod_arith){
 
     if(type >= HDB2){

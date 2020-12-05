@@ -1,5 +1,15 @@
 #include "codeur.h"
 
+
+/**
+ * \fn int rechercheViol(int type, hdbnIn *mess,int indiceDepart)
+ * 
+ * \param type, le type de codage HDBN demandé (2, 3, 4)
+ * \param *mess,structure contenant le message d'origine
+ * \param indiceDepart, le poit de départ du codage
+ * 
+ * \brief Returne le dernier viol effectué par le codage
+ */ 
 int rechercheViol(int type, hdbnIn *mess,int indiceDepart){
     for(int j = 1; j <= type; j++){
         if(mess->message[indiceDepart + j] != 0){
@@ -9,6 +19,15 @@ int rechercheViol(int type, hdbnIn *mess,int indiceDepart){
     return 1;
 }
 
+
+/**
+ * \fn void init_res(hdbnOut *cod, hdbnIn *mess)
+ * 
+ * \param *cod, structure qui contiendra le message codé
+ * \param *mess, structure contenant le message d'origine
+ * 
+ * \brief Initialise les deux tableaux de pulse positif et négatif à 0
+ */ 
 void init_res(hdbnOut *cod, hdbnIn *mess){
     for(int i = 0; i < mess->taille; i++){
         cod->P[i] = 0;
@@ -17,6 +36,17 @@ void init_res(hdbnOut *cod, hdbnIn *mess){
 }
 
 
+/**
+ * \fn void codeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn, arithOut *cod_arith)
+ * 
+ * \param type, le type de codage souhaité (1 arithmétique, 2 hdb2, 3 hdb3, 4 hdb4)
+ * \param *mess_hdbn, Structure contenant le message d'origine pour un codage hdbn (peut être NULL si codage arithmétique)
+ * \param *mess_arith, Structure contenant le message d'origine pour un codage arithmétique (peut être NULL si codage hdbn)
+ * \param *cod_hdbn, Structure contenant le message codé par un codage hdbn (peut être NULL si codage arithmétique)
+ * \param *cod_arith, Structure contenant le message codé par un codage arithmétique (peut être NULL si codage hdbn)
+ * 
+ * \brief Fonction qui selon les paramètres passés, permet de coder un message soit avec le codage HDBN soit avec le codage arithmétique
+ */ 
 void codeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn, arithOut *cod_arith){
 
     if(type >= HDB2){
