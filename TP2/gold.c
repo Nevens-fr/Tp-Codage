@@ -10,7 +10,7 @@
  * \param tab[MAX][MAX] tableau qui stocke les séquences
  * \brief Permet d'effectuer un xor entre les bits choisis par la sequence et de les stocker dans les étages du tablea
  */
-void goldSeq(sequence seq, int etage, int etageMax, int tab[MAX][MAX]){
+void cLM(sequence seq, int etage, int etageMax, int tab[MAX][MAX]){
 
     int tmp;
 
@@ -41,22 +41,65 @@ void goldSeq(sequence seq, int etage, int etageMax, int tab[MAX][MAX]){
  * \param etage le nombre d'étages spécifié par l'user 
  * \brief Effectue un codage de gold en fonction de deux sequences et d'un nombre d'étage
  */
-void gold(sequence seq1, sequence seq2, int etage){
+void gold(sequence seq1, sequence seq2, int res[MAX]){
 
-    int etageMax = pow(2, etage) -1;
     int tmp;
     int tab[MAX][MAX];
+    int tab2[MAX][MAX];
 
-    init_matrice(tab, etageMax, etage);
+    init_matrice(tab, seq1.etageMax, seq1.etage);
+    init_matrice(tab2, seq1.etageMax, seq2.etage);
 
-    goldSeq(seq1, etage, etageMax, tab);
+    cLM(seq1, seq1.etage, seq1.etageMax, tab);
+    cLM(seq2, seq2.etage, seq1.etageMax, tab2);
 
-    for(int i = 0; i<etageMax; i++){
-        for(int j = 0; j<etage; j++){
-            printf("%d ",tab[i][j]);
+    for(int i = 0; i<seq1.etageMax; i++){
+        tmp = tab[i][seq1.etage-1] + tab2[i][seq2.etage-1];
+
+        if(tmp > 1){
+            tmp = 0;
         }
-        printf("\n");
+
+        res[i] = tmp;
+        printf("%d ", res[i]);
     }
+}
+
+void jpl(sequence tabSeq[MAX], int res[MAX]){
+
+    int tailleTabSeq = sizeof(tabSeq) / sizeof(int);
+    int tab[MAX][MAX];
+
+    int tabLigne1[MAX][MAX];
+    int tmp;
+
+    printf("%d\n", tailleTabSeq);
+
+    for(int i = 0; i<tailleTabSeq; i++){
+       init_matrice(tab, tabSeq[i].etageMax, tabSeq[i].etage);
+       cLM(tabSeq[i], tabSeq[i].etage, tabSeq[i].etageMax, tab);
+
+       for(int j = 0; j<tabSeq[i].etageMax; j++){
+           tabLigne1[i][j] = tab[j][tabSeq[i].etage-1];
+           tabLigne1[i][j] = -1;
+       }
+    }
+
+    int k =0;
+    for(int j = 0; j<31; j++){
+        tmp = 0;
+        for(int i = 0; i<tailleTabSeq; i++){
+            tmp = tmp + tabLigne1[i][j];
+
+            if(tmp > 1){
+                tmp = 0;
+            }
+        }
+        
+        res[k++] = tmp;
+        printf("%d ", res[k]);
+    }
+
 }
 
 

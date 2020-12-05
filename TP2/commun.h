@@ -11,6 +11,8 @@
     typedef struct{
         int seq[MAX];
         int taille;
+        int etage;
+        int etageMax;
     }sequence;
 
 #endif
