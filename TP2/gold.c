@@ -49,15 +49,6 @@ void gold(sequence seq1, sequence seq2, int etage){
 
     init_matrice(tab, etageMax, etage);
 
-    for(int i = 0; i<etageMax; i++){
-        for(int j = 0; j<etage; j++){
-            printf("%d ",tab[i][j]);
-        }
-        printf("\n");
-    }
-
-    printf("\n\nGOLLLLDDD\n\n");
-
     goldSeq(seq1, etage, etageMax, tab);
 
     for(int i = 0; i<etageMax; i++){
