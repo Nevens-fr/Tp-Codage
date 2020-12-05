@@ -1,7 +1,13 @@
-^=main.c gold.c
+j=main.c fonctions.c
+g=main_gold.c fonctions.c
 
-all : $^
-	gcc $^ -lm -o main
+all : jpl gold
 
-clean : main
-	rm main
+jpl : $j
+	gcc $j -lm -o mainJpl
+
+gold : $g
+	gcc $g -lm -o mainGold
+
+clean : mainJpl mainGold
+	rm mainJpl mainGold

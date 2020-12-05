@@ -1,16 +1,11 @@
 #include "commun.h"
 #include "fonctions.h"
 
-
-//main jpl
-
+//main gold
 int main(){
 
-    int nb_seq, longueur;
+    int nb_seq = 2, longueur;
     sequence *tabSeq;
-
-    printf("Combien de séquences souhaitez vous utilisez ? ");
-    scanf("%d", &nb_seq);
 
     tabSeq = malloc(sizeof(sequence) * nb_seq);
 
@@ -39,9 +34,11 @@ int main(){
     printf("Saisir la longueur du message final : ");
     scanf("%d", &longueur);
 
-    int resultat[MAX];
+    int resultat[longueur];
 
-    jpl(tabSeq, resultat, nb_seq, longueur);
+    gold(tabSeq[0], tabSeq[1], resultat, longueur);
+
+    printf("\n");
 
     free(tabSeq);
 
