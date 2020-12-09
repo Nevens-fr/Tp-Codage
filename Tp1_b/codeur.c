@@ -130,20 +130,15 @@ void codeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn,
         frequences_ordonnees(&cod_arith->frequences, occ, lettre, k);
 
         ///////////// Calcul du message
-        double borne_inf = cod_arith->frequences.freq[0][0], borne_sup = cod_arith->frequences.freq[0][1], old;
+        double borne_inf = cod_arith->frequences.freq[0][0], borne_sup = cod_arith->frequences.freq[0][1], old;         
 
         for(i = 1; i < mess_arith->taille; i++){
             old = borne_inf;
+
             for(j = 0; j < cod_arith->frequences.taille && cod_arith->frequences.lettre[j] != mess_arith->message[i]; j++);
 
-            if(cod_arith->frequences.freq[j][0] != 0){
-                borne_inf = borne_inf + (borne_sup - borne_inf) * cod_arith->frequences.freq[j][0];
-                borne_sup = old + (borne_sup - old) * cod_arith->frequences.freq[j][1];
-            }
-            else{
-                borne_inf = old;
-                borne_sup = old + (borne_sup - old)/10;
-            }
+            borne_inf = borne_inf + ((borne_sup - borne_inf) * cod_arith->frequences.freq[j][0]);
+            borne_sup = old + ((borne_sup - old) * cod_arith->frequences.freq[j][1]);
         }
 
         cod_arith->F = borne_inf;

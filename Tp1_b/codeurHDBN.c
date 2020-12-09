@@ -24,7 +24,7 @@ int main(void){
     code.taille = mess.taille;
     decode.taille = mess.taille;
 
-    memmove(mess.message, message, sizeof(int) * 23);
+    memmove(mess.message, message, sizeof(int) * mess.taille);
 
     //Affichage envoie
     printf("M envoyé : ");
