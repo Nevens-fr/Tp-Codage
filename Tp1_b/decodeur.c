@@ -64,6 +64,7 @@ void decodeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdb
 
     }
     else{
+    // Décodage arithmétique
         int j = 0, k = 0;
 
         while(cod_arith->frequences.tailleCh > k){

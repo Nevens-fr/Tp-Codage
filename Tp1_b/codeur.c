@@ -5,10 +5,10 @@
  * \fn int rechercheViol(int type, hdbnIn *mess,int indiceDepart)
  * 
  * \param type, le type de codage HDBN demandé (2, 3, 4)
- * \param *mess,structure contenant le message d'origine
- * \param indiceDepart, le poit de départ du codage
+ * \param *mess, structure contenant le message d'origine
+ * \param indiceDepart, le point de départ du codage
  * 
- * \brief Returne le dernier viol effectué par le codage
+ * \brief Retourne le dernier viol effectué par le codage
  */ 
 int rechercheViol(int type, hdbnIn *mess,int indiceDepart){
     for(int j = 1; j <= type; j++){
@@ -147,12 +147,13 @@ void codeur(int type, hdbnIn *mess_hdbn, arithIn *mess_arith, hdbnOut *cod_hdbn,
 
 
 /**
- * \fn int occurences(char chaine[TAILLE], char l)
+ * \fn int occurences(char chaine[TAILLE], char l, int taille)
  * 
- * \param chaine[TAILLE], la chaîne de caractère dans laquelle on cherche une lettre
+ * \param chaine[TAILLE], la chaîne de caractères dans laquelle on cherche une lettre
  * \param l, la lettre pour laquelle on compte les occurences
+ * \param taille, la taille de la chaine
  * 
- * \brief Compte et renvoi le nombre d'occurences d'une lettre dans une chaîne de caractère
+ * \brief Compte et renvoi le nombre d'occurences d'une lettre dans une chaîne de caractères
  */
 int occurences(char chaine[TAILLE], char l, int taille){
 
@@ -168,7 +169,7 @@ int occurences(char chaine[TAILLE], char l, int taille){
 /**
  * \fn void frequences_ordonnees(matrice code, int occ[TAILLE], char lettre[TAILLE], int taille)
  * 
- * \param code, structure matrice qui contient la frequece d'apparition de chaque lettre du message
+ * \param code, structure matrice qui contient la fréquence d'apparition de chaque lettre du message
  * \param occ[TAILLE], tableau des occurences des lettres
  * \param lettre[TAILLE], tableau des caractères du message originel
  * \param taille, la taille effective des deux tableaux ci-dessus

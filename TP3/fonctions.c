@@ -8,7 +8,7 @@
  * 
  * \param ag, pointeur de pointeur sur une structure agent
  * 
- * \brief Allocaiion dynamique de l'espace mémoire
+ * \brief Allocation dynamique de l'espace mémoire
  */ 
 void create_thread(agent **ag){
     *ag = malloc(sizeof(agent));
@@ -34,11 +34,12 @@ void init_thread(agent *ag){
 
 
 /**
- * \fn void init_thread(agent *ag)
+ * \fn void init_thread(agent *ag, int fonction_voulue)
  * 
  * \param ag, pointeur sur une structure agent
+ * \param fonction_voulue, un entier designant la fonction devant s'executer
  * 
- * \brief On lance le thread
+ * \brief La fonction permet de lancer le thread
  */ 
 void activate_thread(agent *ag, int fonction_voulue){
     if(ag->etat != actif){

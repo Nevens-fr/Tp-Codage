@@ -5,10 +5,6 @@
 
 int main(void){
 
-    ///////VALEURS A CHANGER
-    //Message du td HDB2
-    //int message[] = {1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0};
-
     //Message HDB3
     int message[] = {1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0};
 

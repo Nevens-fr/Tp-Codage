@@ -2,7 +2,7 @@
 
 
 /**
- * \fn void afficher_hadamard(int tableau[MAX][MAX], int m)
+ * \fn void afficher_hadamard(int tableau[MAX][MAX], int taille)
  * \param tableau, la matrice d'hadamard a afficher.
  * \param taille, la taille de la matrice.
  * \brief Permet d'afficher une matrice de Hadamard
@@ -45,13 +45,12 @@ void hadamard(int tableau[MAX][MAX], int nbUser){
 
 
 /**
- * \fn void codage(int ligne, int taille_ligne,, int *message, int taille_message, int *res)
+ * \fn void codage(int ligne, int taille_ligne,, int tableau[MAX][MAX], int *message, int *res)
  * 
  * \param ligne, représente la séquence utilisée dans le tableau d'Hadamard
  * \param taille_ligne, représente la longueur d'une ligne dans le tableau d'Hadamard
- * \param *tableau, la matrice d'Hadamard
+ * \param tableau[MAX][MAX], la matrice d'Hadamard
  * \param *message, le message de l'utilisateur
- * \param taille_message, le nombre d'éléments du message
  * \param *res, pointeur déjà initialisé qui contiendra le résultat du codage
  * \brief Fonction permettant de réaliser la séquence du codage de Hadamard d'un utilisateur
  */ 
@@ -77,8 +76,8 @@ void codage(int ligne, int taille_ligne,int tableau[MAX][MAX], int *message, int
 /**
  * \fn void affichage_codage(int taille, int *tab)
  * 
- * \param taille 
- * \param tab 
+ * \param taille la taille de la sequence a afficher
+ * \param tab pointeur contenant la sequence codée a afficher
  * 
  * \brief Permet d'afficher une séquence codée
  */
@@ -94,11 +93,11 @@ void affichage_codage(int taille, int *tab){
 
 
 /**
- * \fn void mise_a_zero(int **tab, int taille, int longueur)
+ * \fn void etalement(int **mess_codes, int taille_mess, int nb_mess,int *res)
  * 
  * \param **mess_codes, le tableau contenant les messages codés
- * \param nb_mess, le nombre de messages dans le tableau
  * \param taille_mess, longueur des messages
+ * \param nb_mess, le nombre de messages dans le tableau
  * \param *res, tableau d'entiers dans lequel est stocké l'étalement
  * 
  * \brief Effectue l'étalement sur les messages codés
@@ -136,7 +135,7 @@ void mise_a_zero(int **tab, int taille, int longueur){
 
 
 /**
- * \fn int **allocation_tab_message(int nbUser,)
+ * \fn int **allocation_tab_message(int nbUser)
  * 
  * \param nbUser, le nombre de messages dans le tableau
  * 

@@ -4,7 +4,7 @@
 
     #include "commun.h"
 
-    void afficher_hadamard(int tableau[MAX][MAX], int m);
+    void afficher_hadamard(int tableau[MAX][MAX], int taille);
     void hadamard(int tableau[MAX][MAX], int nbUser);
     void codage(int ligne, int taille_ligne,int tableau[MAX][MAX], int *message, int *res);
     void affichage_codage(int taille, int *tab);

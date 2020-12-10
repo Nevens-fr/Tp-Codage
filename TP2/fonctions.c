@@ -4,22 +4,22 @@
 /**
  * \fn void cLM(sequence seq, int etage, int etageMax, int tab[MAX][MAX])
  * 
- * \param seq la sequence d'étage a utiliser 
+ * \param seq la séquence d'étage a utiliser 
  * \param etage le nombre d'étages spécifié par l'user 
- * \param etageMax représente la longueur max de la sequence en fonction de l'etage
- * \param tab[MAX][MAX] tableau qui stocke les séquences
- * \brief Permet d'effectuer un xor entre les bits choisis par la sequence et de les stocker dans les étages du tablea
+ * \param etageMax représente la longueur max de la séquence en fonction de l'étage
+ * \param tab[MAX][MAX] tableau qui stock les séquences
+ * \brief Permet d'effectuer un XOR entre les bits choisis par la séquence et de les stocker dans les étages du tableau
  */
 void cLM(sequence seq, int etage, int etageMax, int tab[MAX][MAX]){
 
     int tmp;
 
-    //Premier etage a 1
+    //Premier étage a 1
     for(int i = 0; i<etage; i++){
         tab[0][i] = 1;
     }
 
-    //Creation du tableau
+    //Création du tableau
     for(int i = 0; i<etageMax-1; i++){
         tmp = 0;
         for(int j = 0; j<seq.taille; j++){
@@ -34,13 +34,13 @@ void cLM(sequence seq, int etage, int etageMax, int tab[MAX][MAX]){
 }
 
 /**
- * \fn void gold(sequence seq1, sequence seq2, int etage)
+ * \fn void gold(sequence seq1, sequence seq2, int res[], int longueur)
  * 
- * \param seq1 la première sequence d'étage a utiliser 
- * \param seq2 la seconde sequence d'étage a utiliser 
+ * \param seq1 la première séquence d'étage a utiliser 
+ * \param seq2 la seconde séquence d'étage a utiliser 
  * \param etage le nombre d'étages spécifié par l'user
  * \param longueur La longueur de la séquence finale choisie par l'utilisateur
- * \brief Effectue un codage de gold en fonction de deux sequences et d'un nombre d'étage
+ * \brief Effectue un codage de gold en fonction de deux séquences et d'un nombre d'étage
  */
 void gold(sequence seq1, sequence seq2, int res[], int longueur){
 
@@ -74,13 +74,13 @@ void gold(sequence seq1, sequence seq2, int res[], int longueur){
 }
 
 /**
- * \fn jpl(sequence tabSeq[MAX], int res[MAX], int tailleTabSeq)
+ * \fn jpl(sequence tabSeq[MAX], int res[MAX], int tailleTabSeq, int longueur)
  * 
  * \param tabSeq tableau contenant toutes les séquences à utiliser
  * \param res tableau stockant la séquence finale
  * \param tailleTabSeq taille du tableau tabSeq
  * \param longueur La longueur de la séquence finale choisie par l'utilisateur
- * \brief fonction réalisant un codage de JPL sur un nombre de fonctions choisies par l'utilisateur
+ * \brief fonction réalisant un codage JPL sur un nombre de fonctions choisies par l'utilisateur
  */
 void jpl(sequence tabSeq[], int res[], int tailleTabSeq, int longueur){
 
@@ -165,7 +165,7 @@ void init_matrice(int tab[MAX][MAX], int l, int c){
 /**
  * \fn void remplissage_decalage(int tab[MAX][MAX], int longueur, int etage1, int etage2, int val)
  * 
- * \param tab[][], matrice contenant le tableau du code de gold
+ * \param tab[MAX][MAX], matrice contenant le tableau du code de gold
  * \param longueur, longueur d'une ligne de la matrice
  * \param etage1, l'étage duquel on veut dupliquer la ligne
  * \param etage2, l'étage que l'on va remplir
